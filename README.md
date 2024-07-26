@@ -1,4 +1,8 @@
+# Gerenciador de Tarefas - Diagrama de Classe
 
+Este projeto é um simples gerenciador de tarefas, permitindo adicionar, remover e marcar tarefas como concluídas. Abaixo está o diagrama de classe que ilustra a estrutura do sistema.
+
+Para acessar a documentação da API e testar os endpoints, visite o [Swagger UI](http://localhost:8080/swagger-ui.html).
 
 ```mermaid
 classDiagram

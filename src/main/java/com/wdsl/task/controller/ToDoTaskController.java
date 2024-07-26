@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
@@ -22,7 +23,12 @@ public class ToDoTaskController {
     @PostMapping
     public ResponseEntity<ToDoTask> addTask(@RequestBody ToDoTask task) {
         ToDoTask createdTask = toDoTaskService.addTask(task);
-        return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
+        return ResponseEntity.created(
+                        ServletUriComponentsBuilder.fromCurrentRequest()
+                                .path("/{id}")
+                                .buildAndExpand(createdTask.getId())
+                                .toUri())
+                .body(createdTask);
     }
 
     @DeleteMapping("/{id}")

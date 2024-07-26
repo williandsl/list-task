@@ -1,14 +1,18 @@
 package com.wdsl.task.model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode
+@Entity
+@Table(name = "tb_tasks")
 public class ToDoTask {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
     private boolean isCompleted = false;

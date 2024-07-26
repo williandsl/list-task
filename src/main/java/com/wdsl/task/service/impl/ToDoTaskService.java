@@ -3,16 +3,20 @@ package com.wdsl.task.service.impl;
 import com.wdsl.task.model.ToDoTask;
 import com.wdsl.task.repository.ToDoTaskRepository;
 import com.wdsl.task.service.IToDoTaskService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class ToDoTaskService implements IToDoTaskService {
+    @Autowired
     private final ToDoTaskRepository toDoTaskRepository;
+
+    public ToDoTaskService(ToDoTaskRepository toDoTaskRepository) {
+        this.toDoTaskRepository = toDoTaskRepository;
+    }
 
     @Override
     public ToDoTask addTask(ToDoTask task) {

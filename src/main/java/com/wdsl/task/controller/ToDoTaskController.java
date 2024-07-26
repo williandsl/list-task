@@ -2,7 +2,7 @@ package com.wdsl.task.controller;
 
 import com.wdsl.task.model.ToDoTask;
 import com.wdsl.task.service.impl.ToDoTaskService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 public class ToDoTaskController {
-
+    @Autowired
     private final ToDoTaskService toDoTaskService;
+
+    public ToDoTaskController(ToDoTaskService toDoTaskService) {
+        this.toDoTaskService = toDoTaskService;
+    }
 
     @PostMapping
     public ResponseEntity<ToDoTask> addTask(@RequestBody ToDoTask task) {
